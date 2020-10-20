@@ -17,7 +17,6 @@ protocol DetailHeroPresenterProtocol: AnyObject {
     var hero: Hero? {get set}
     var router: Router {get set}
     init(view: DetailHeroViewProtocol, hero: Hero, router: Router)
-    func setHeroImageOnView()
 }
 
 class DetailHeroPresenter: DetailHeroPresenterProtocol {
@@ -30,11 +29,6 @@ class DetailHeroPresenter: DetailHeroPresenterProtocol {
         self.view = view
         self.router = router
     }
-    
-    func setHeroImageOnView() {
-        
-    }
-    
 }
 
 

@@ -20,17 +20,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mqw-ZP-s8Q">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="552"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="mqw-ZP-s8Q" secondAttribute="height" multiplier="27:36" id="HdU-ZJ-8Gg"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="mqw-ZP-s8Q" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="AtI-4v-z4F"/>
                 <constraint firstItem="mqw-ZP-s8Q" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="LUK-6l-Kq0"/>
-                <constraint firstItem="mqw-ZP-s8Q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Nnw-LY-BbF"/>
-                <constraint firstAttribute="bottom" secondItem="mqw-ZP-s8Q" secondAttribute="bottom" id="X76-AG-hXF"/>
                 <constraint firstItem="mqw-ZP-s8Q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Y5X-cz-Yff"/>
             </constraints>
+            <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="121.73913043478262" y="72.991071428571431"/>
         </view>
     </objects>

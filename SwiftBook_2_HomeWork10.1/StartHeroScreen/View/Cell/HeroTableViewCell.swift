@@ -9,12 +9,6 @@ import UIKit
 
 class HeroTableViewCell: UITableViewCell {
     
-    enum ImageManagerError: Error {
-        case invalidResponse
-    }
-    
-    
-    
     private weak var task: URLSessionTask?
     
     @IBOutlet var heroImageView: UIImageView!
@@ -44,9 +38,9 @@ class HeroTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        task?.cancel()
-        
         super.prepareForReuse()
+        
+        task?.cancel()
         self.heroImageView?.image = #imageLiteral(resourceName: "Снимок экрана 2020-10-18 в 07.34.36")
         self.durability.text = nil
         self.fullName.text = nil
@@ -54,20 +48,15 @@ class HeroTableViewCell: UITableViewCell {
         self.speed.text = nil
         self.strength.text = nil
     }
-
+    
     @discardableResult
     func imageTask(for url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) -> URLSessionTask {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else {
+            guard let data = data,
+                  let httpResponse = response as? HTTPURLResponse,
+                  200..<300 ~= httpResponse.statusCode,
+                  let image = UIImage(data: data) else {
                 DispatchQueue.main.async { completion(.failure(error!)) }
-                return
-            }
-            guard
-                let httpResponse = response as? HTTPURLResponse,
-                200..<300 ~= httpResponse.statusCode,
-                let image = UIImage(data: data)
-            else {
-                DispatchQueue.main.async { completion(.failure(ImageManagerError.invalidResponse)) }
                 return
             }
             DispatchQueue.main.async { completion(.success(image)) }

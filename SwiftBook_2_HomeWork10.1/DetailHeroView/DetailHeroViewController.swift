@@ -36,7 +36,6 @@ class DetailHeroViewController: UIViewController, DetailHeroViewProtocol {
     func setHero(hero: Hero?) {
         
     }
-    
 }
 
 
