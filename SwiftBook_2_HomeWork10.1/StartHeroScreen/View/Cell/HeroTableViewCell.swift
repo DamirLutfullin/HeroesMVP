@@ -18,23 +18,13 @@ class HeroTableViewCell: UITableViewCell {
     @IBOutlet var strength: UILabel!
     @IBOutlet var speed: UILabel!
     
-    func configurateCell(hero: Hero) {
+    func configurateCell(hero: Hero, task: URLSessionTask) {
+        self.task = task
         fullName.text = hero.name
         intelligence.text = hero.powerstats.intelligence.description
         durability.text = hero.powerstats.durability.description
         strength.text = hero.powerstats.strength.description
         speed.text = hero.powerstats.speed.description
-        
-        let urlString = hero.images.md
-        guard let url = URL(string: urlString) else { return }
-        task = imageTask(for: url, completion: { (result) in
-            switch result {
-            case .success(let image):
-                self.heroImageView.image = image
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        })
     }
     
     override func prepareForReuse() {
@@ -49,19 +39,8 @@ class HeroTableViewCell: UITableViewCell {
         self.strength.text = nil
     }
     
-    @discardableResult
-    func imageTask(for url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) -> URLSessionTask {
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data,
-                  let httpResponse = response as? HTTPURLResponse,
-                  200..<300 ~= httpResponse.statusCode,
-                  let image = UIImage(data: data) else {
-                DispatchQueue.main.async { completion(.failure(error!)) }
-                return
-            }
-            DispatchQueue.main.async { completion(.success(image)) }
-        }
-        task.resume()
-        return task
+    func setImage(data: Data) {
+        self.heroImageView.image = UIImage(data: data)
     }
+
 }

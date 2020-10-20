@@ -10,6 +10,7 @@ import UIKit
 protocol StartHeroViewProtocol: class {
     func showHeroes()
     func showError(error: Error)
+    func setImage(dataForImage: Data, indexPath: IndexPath)
 }
 
 class StartHeroView: UITableViewController {
@@ -26,6 +27,8 @@ class StartHeroView: UITableViewController {
         return activityIndicator
     }()
     
+    var dataForImage: Data?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
@@ -36,6 +39,12 @@ class StartHeroView: UITableViewController {
 
 //MARK: - StartHeroViewProtocol
 extension StartHeroView: StartHeroViewProtocol {
+    func setImage(dataForImage: Data, indexPath: IndexPath) {
+        self.dataForImage = dataForImage
+        guard let cell = tableView.cellForRow(at: indexPath) as? HeroTableViewCell else { return }
+        cell.setImage(data: dataForImage)
+    }
+    
     func showHeroes() {
         tableView.reloadData()
         activityIndicator.stopAnimating()
@@ -65,8 +74,8 @@ extension StartHeroView {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HeroTableViewCell
-        if let hero = heroPresenter.heroes?[indexPath.row] {
-            cell.configurateCell(hero: hero)
+        if let hero = heroPresenter.heroes?[indexPath.row], let task = heroPresenter.setImage(hero: hero, indexPath: indexPath) {
+            cell.configurateCell(hero: hero, task: task)
         }
         return cell
     }

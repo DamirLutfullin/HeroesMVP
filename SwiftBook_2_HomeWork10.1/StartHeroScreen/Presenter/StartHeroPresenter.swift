@@ -13,6 +13,7 @@ protocol StartHeroPresenterProtocol: class {
     init(view: StartHeroViewProtocol?, network: NetworkManagerProtocol, router: Router)
     func downloadComments()
     func showDetailView(hero: Hero)
+    func setImage(hero: Hero, indexPath: IndexPath) -> URLSessionTask?
 }
 
 class StartHeroPresenter: StartHeroPresenterProtocol {
@@ -21,6 +22,7 @@ class StartHeroPresenter: StartHeroPresenterProtocol {
     weak var heroView: StartHeroViewProtocol!
     var network: NetworkManagerProtocol!
     var heroes: [Hero]?
+    var task: URLSessionTask?
     
     
     required init(view: StartHeroViewProtocol?, network: NetworkManagerProtocol, router: Router) {
@@ -44,5 +46,18 @@ class StartHeroPresenter: StartHeroPresenterProtocol {
     
     func showDetailView(hero: Hero) {
         router.pushDetailViewController(hero: hero)
+    }
+    
+    func setImage(hero: Hero, indexPath: IndexPath) -> URLSessionTask? {
+        let imageString = hero.images.lg
+        self.task = network.downloadImage2(urlString: imageString, indexPath: indexPath) { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                self?.heroView?.setImage(dataForImage: data, indexPath: indexPath)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        return task
     }
 }
