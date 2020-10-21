@@ -42,5 +42,4 @@ class HeroTableViewCell: UITableViewCell {
     func setImage(data: Data) {
         self.heroImageView.image = UIImage(data: data)
     }
-
 }
