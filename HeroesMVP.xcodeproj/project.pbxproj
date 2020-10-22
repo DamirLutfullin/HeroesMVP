@@ -28,7 +28,7 @@
 		1936F525253CFA5000C7179A /* DetailHeroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroViewController.swift; sourceTree = "<group>"; };
 		1936F526253CFA5000C7179A /* DetailHeroViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeroViewController.xib; sourceTree = "<group>"; };
 		1936F52E253CFAF900C7179A /* DetailHeroPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroPresenter.swift; sourceTree = "<group>"; };
-		1938C270253510D700395E8F /* SwiftBook_2_HomeWork10.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook_2_HomeWork10.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1938C270253510D700395E8F /* HeroesMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeroesMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1938C273253510D700395E8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1938C275253510D700395E8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1938C281253510D900395E8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		1938C267253510D600395E8F = {
 			isa = PBXGroup;
 			children = (
-				1938C272253510D700395E8F /* SwiftBook_2_HomeWork10.1 */,
+				1938C272253510D700395E8F /* HeroesMVP */,
 				1938C271253510D700395E8F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,12 +92,12 @@
 		1938C271253510D700395E8F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1938C270253510D700395E8F /* SwiftBook_2_HomeWork10.1.app */,
+				1938C270253510D700395E8F /* HeroesMVP.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1938C272253510D700395E8F /* SwiftBook_2_HomeWork10.1 */ = {
+		1938C272253510D700395E8F /* HeroesMVP */ = {
 			isa = PBXGroup;
 			children = (
 				19CE5DBE253C8E4C00FF9AEB /* App */,
@@ -106,7 +106,7 @@
 				19E3AE572539B72F00F2C691 /* Services */,
 				19E3AE532539B6B700F2C691 /* SupportingFiles */,
 			);
-			path = SwiftBook_2_HomeWork10.1;
+			path = HeroesMVP;
 			sourceTree = "<group>";
 		};
 		19CE5DBE253C8E4C00FF9AEB /* App */ = {
@@ -185,9 +185,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1938C26F253510D700395E8F /* SwiftBook_2_HomeWork10.1 */ = {
+		1938C26F253510D700395E8F /* HeroesMVP */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1938C284253510D900395E8F /* Build configuration list for PBXNativeTarget "SwiftBook_2_HomeWork10.1" */;
+			buildConfigurationList = 1938C284253510D900395E8F /* Build configuration list for PBXNativeTarget "HeroesMVP" */;
 			buildPhases = (
 				1938C26C253510D700395E8F /* Sources */,
 				1938C26D253510D700395E8F /* Frameworks */,
@@ -197,9 +197,9 @@
 			);
 			dependencies = (
 			);
-			name = SwiftBook_2_HomeWork10.1;
+			name = HeroesMVP;
 			productName = SwiftBook_2_HomeWork10.1;
-			productReference = 1938C270253510D700395E8F /* SwiftBook_2_HomeWork10.1.app */;
+			productReference = 1938C270253510D700395E8F /* HeroesMVP.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -216,7 +216,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1938C26B253510D600395E8F /* Build configuration list for PBXProject "SwiftBook_2_HomeWork10.1" */;
+			buildConfigurationList = 1938C26B253510D600395E8F /* Build configuration list for PBXProject "HeroesMVP" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -229,7 +229,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1938C26F253510D700395E8F /* SwiftBook_2_HomeWork10.1 */,
+				1938C26F253510D700395E8F /* HeroesMVP */,
 			);
 		};
 /* End PBXProject section */
@@ -393,12 +393,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TQU76263MV;
-				INFOPLIST_FILE = "$(SRCROOT)/SwiftBook_2_HomeWork10.1/SupportingFiles/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/HeroesMVP/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.damirLutfullin.SwiftBook-2-HomeWork10-1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.damirLutfullin.heroesMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -412,12 +413,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TQU76263MV;
-				INFOPLIST_FILE = "$(SRCROOT)/SwiftBook_2_HomeWork10.1/SupportingFiles/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/HeroesMVP/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.damirLutfullin.SwiftBook-2-HomeWork10-1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.damirLutfullin.heroesMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -427,7 +429,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1938C26B253510D600395E8F /* Build configuration list for PBXProject "SwiftBook_2_HomeWork10.1" */ = {
+		1938C26B253510D600395E8F /* Build configuration list for PBXProject "HeroesMVP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1938C282253510D900395E8F /* Debug */,
@@ -436,7 +438,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1938C284253510D900395E8F /* Build configuration list for PBXNativeTarget "SwiftBook_2_HomeWork10.1" */ = {
+		1938C284253510D900395E8F /* Build configuration list for PBXNativeTarget "HeroesMVP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1938C285253510D900395E8F /* Debug */,
