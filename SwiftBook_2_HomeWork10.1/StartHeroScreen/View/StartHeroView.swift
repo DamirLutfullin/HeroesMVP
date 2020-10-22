@@ -15,7 +15,7 @@ protocol StartHeroViewProtocol: class {
 }
 
 class StartHeroView: UITableViewController {
-
+    
     var heroPresenter: StartHeroPresenterProtocol!
     var activityIndicator: UIActivityIndicatorView!
     var dataForImage: Data?
@@ -23,25 +23,22 @@ class StartHeroView: UITableViewController {
     //MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.separatorStyle = .none
-        setActivityIndicator()
+        setView()
+
         tableView.register(UINib(nibName: "HeroTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         heroPresenter.setHeroesForView()
         
         self.navigationController?.navigationBar.tintColor = .black
-
-        
-        let visualEffectView   = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-        visualEffectView.frame =  (self.navigationController?.navigationBar.bounds.insetBy(dx: 0, dy: -10).offsetBy(dx: 0, dy: -10))!
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.addSubview(visualEffectView)
-        self.navigationController?.navigationBar.sendSubviewToBack(visualEffectView)
-        visualEffectView.layer.zPosition = -1;
-            visualEffectView.isUserInteractionEnabled = false
     }
     
     //MARK: - func
+    private func setView() {
+        tableView.separatorStyle = .none
+        self.navigationController?.navigationBar.tintColor = .black
+        setActivityIndicator()
+        setBlurEffectForNavigationBar()
+    }
+    
     private func setActivityIndicator() {
         self.activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.frame = CGRect(x: 0, y: 0,
@@ -51,6 +48,17 @@ class StartHeroView: UITableViewController {
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
         tableView.addSubview(activityIndicator)
+    }
+    
+    private func setBlurEffectForNavigationBar() {
+        let visualEffectView   = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        visualEffectView.frame =  (self.navigationController?.navigationBar.bounds.insetBy(dx: 0, dy: -10).offsetBy(dx: 0, dy: -10))!
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.addSubview(visualEffectView)
+        self.navigationController?.navigationBar.sendSubviewToBack(visualEffectView)
+        visualEffectView.layer.zPosition = -1;
+        visualEffectView.isUserInteractionEnabled = false
     }
 }
 
@@ -66,7 +74,7 @@ extension StartHeroView: StartHeroViewProtocol {
         tableView.reloadData()
         activityIndicator.stopAnimating()
     }
-
+    
     func showError(error: Error) {
         activityIndicator.stopAnimating()
         print(error.localizedDescription)
