@@ -10,13 +10,13 @@ import Foundation
 protocol DetailHeroPresenterProtocol: AnyObject {
     var view: DetailHeroViewProtocol? { get set }
     init(view: DetailHeroViewProtocol, hero: Hero, network: NetworkManagerProtocol, router: Router)
-    func setImage()
+    func setHero()
 }
 
 class DetailHeroPresenter: DetailHeroPresenterProtocol {
     
     weak var view: DetailHeroViewProtocol?
-    var hero: Hero?
+    var hero: Hero
     var router: RouterProtocol
     var network: NetworkManagerProtocol
     
@@ -27,14 +27,13 @@ class DetailHeroPresenter: DetailHeroPresenterProtocol {
         self.router = router
     }
     
-    func setImage() {
-        guard  let imageString = hero?.images.lg else {
-            return
-        }
+    func setHero() {
+        view?.showInfo(hero: hero)
+        let imageString = hero.images.lg
         network.downloadImage(urlString: imageString) { [weak self] (result) in
             switch result {
             case .success(let data):
-                self?.view?.setImage(dataForImage: data)
+                self?.view?.showImage(dataForImage: data)
             case .failure(let error):
                 print(error.localizedDescription)
             }

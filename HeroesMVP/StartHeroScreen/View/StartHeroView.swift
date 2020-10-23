@@ -24,7 +24,6 @@ class StartHeroView: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-
         tableView.register(UINib(nibName: "HeroTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         heroPresenter.setHeroesForView()
         
@@ -35,8 +34,23 @@ class StartHeroView: UITableViewController {
     private func setView() {
         tableView.separatorStyle = .none
         self.navigationController?.navigationBar.tintColor = .black
+        setBackbroundView()
         setActivityIndicator()
         setBlurEffectForNavigationBar()
+    }
+    
+    override func viewDidLayoutSubviews() {
+
+    }
+
+    private func setBackbroundView() {
+        let image = UIImageView(frame: UIScreen.main.bounds)
+        image.contentMode = .scaleAspectFill
+        image.image = #imageLiteral(resourceName: "heroes")
+        tableView.backgroundView = image
+        tableView.backgroundColor = .black
+        tableView.backgroundView?.alpha = 0.5
+        
     }
     
     private func setActivityIndicator() {

@@ -11,32 +11,35 @@ class HeroTableViewCell: UITableViewCell {
     
     private weak var task: URLSessionTask?
     
+    @IBOutlet var containerViewForCell: UIView!
     @IBOutlet var heroImageView: UIImageView!
     @IBOutlet var fullName: UILabel!
-    @IBOutlet var intelligence: UILabel!
-    @IBOutlet var durability: UILabel!
-    @IBOutlet var strength: UILabel!
-    @IBOutlet var speed: UILabel!
-   
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = .clear
+        self.containerViewForCell.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
+        heroImageView.clipsToBounds = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        heroImageView.layer.cornerRadius = 15
+        containerViewForCell.layer.cornerRadius = 15
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         
         task?.cancel()
         self.heroImageView?.image = #imageLiteral(resourceName: "Снимок экрана 2020-10-18 в 07.34.36")
-        self.durability.text = nil
         self.fullName.text = nil
-        self.intelligence.text = nil
-        self.speed.text = nil
-        self.strength.text = nil
     }
     
     func configurate(hero: Hero, task: URLSessionTask) {
         self.task = task
         fullName.text = hero.name
-        intelligence.text = hero.powerstats.intelligence.description
-        durability.text = hero.powerstats.durability.description
-        strength.text = hero.powerstats.strength.description
-        speed.text = hero.powerstats.speed.description
     }
     
     func setImage(data: Data) {
