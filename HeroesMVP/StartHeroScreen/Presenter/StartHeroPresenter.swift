@@ -8,10 +8,9 @@
 import UIKit
 
 protocol StartHeroPresenterProtocol: class {
-    
+
     var heroes: [Hero]? {get set}
-    var router: Router {get set}
-    
+
     init(view: StartHeroViewProtocol?, network: NetworkManagerProtocol, router: Router)
     
     func setHeroesForView()
@@ -20,13 +19,13 @@ protocol StartHeroPresenterProtocol: class {
     
 }
 
-class StartHeroPresenter: StartHeroPresenterProtocol {
+final class StartHeroPresenter: StartHeroPresenterProtocol {
     
-    var router: Router
-    weak var heroView: StartHeroViewProtocol!
-    var network: NetworkManagerProtocol!
+    private var router: Router
+    private weak var heroView: StartHeroViewProtocol!
+    private var network: NetworkManagerProtocol!
+    private var task: URLSessionTask?
     var heroes: [Hero]?
-    var task: URLSessionTask?
     
     required init(view: StartHeroViewProtocol?, network: NetworkManagerProtocol, router: Router) {
         self.heroView = view
@@ -55,7 +54,7 @@ class StartHeroPresenter: StartHeroPresenterProtocol {
         self.task = network.downloadImageForCell(urlString: imageString, indexPath: cellIndex) { [weak self] (result) in
             switch result {
             case .success(let data):
-                self?.heroView?.setImage(dataForImage: data, indexPath: cellIndex)
+                self?.heroView?.showCellImage(dataForImage: data, indexPath: cellIndex)
             case .failure(let error):
                 print(error.localizedDescription)
             }

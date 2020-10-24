@@ -7,8 +7,9 @@
 
 import UIKit
 
-class HeroTableViewCell: UITableViewCell {
+final class HeroTableViewCell: UITableViewCell {
     
+    // для отмены загрузки картинки в случае пролистывания
     private weak var task: URLSessionTask?
     
     @IBOutlet var containerViewForCell: UIView!
@@ -32,8 +33,9 @@ class HeroTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        //отменяет загрузку картинки, если пропала необходимость
         task?.cancel()
-        self.heroImageView?.image = #imageLiteral(resourceName: "Снимок экрана 2020-10-18 в 07.34.36")
+        self.heroImageView?.image = #imageLiteral(resourceName: "Снимок")
         self.fullName.text = nil
     }
     

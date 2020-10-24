@@ -11,26 +11,25 @@ import UIKit
 protocol StartHeroViewProtocol: class {
     func showHeroes()
     func showError(error: Error)
-    func setImage(dataForImage: Data, indexPath: IndexPath)
+    func showCellImage(dataForImage: Data, indexPath: IndexPath)
 }
 
-class StartHeroView: UITableViewController {
+final class StartHeroView: UITableViewController {
     
+    //MARK: -Properties
+    private var activityIndicator: UIActivityIndicatorView!
     var heroPresenter: StartHeroPresenterProtocol!
-    var activityIndicator: UIActivityIndicatorView!
-    var dataForImage: Data?
     
-    //MARK: - life cycle
+    //MARK: -Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = .black
         setView()
         tableView.register(UINib(nibName: "HeroTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         heroPresenter.setHeroesForView()
-        
-        self.navigationController?.navigationBar.tintColor = .black
     }
     
-    //MARK: - func
+    //MARK: -Func
     private func setView() {
         tableView.separatorStyle = .none
         self.navigationController?.navigationBar.tintColor = .black
@@ -39,10 +38,6 @@ class StartHeroView: UITableViewController {
         setBlurEffectForNavigationBar()
     }
     
-    override func viewDidLayoutSubviews() {
-
-    }
-
     private func setBackbroundView() {
         let image = UIImageView(frame: UIScreen.main.bounds)
         image.contentMode = .scaleAspectFill
@@ -50,22 +45,21 @@ class StartHeroView: UITableViewController {
         tableView.backgroundView = image
         tableView.backgroundColor = .black
         tableView.backgroundView?.alpha = 0.5
-        
     }
     
     private func setActivityIndicator() {
-        self.activityIndicator = UIActivityIndicatorView(style: .medium)
+        self.activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.frame = CGRect(x: 0, y: 0,
                                          width: UIScreen.main.bounds.size.width,
                                          height: UIScreen.main.bounds.size.height)
-        activityIndicator.color = .black
+        activityIndicator.color = .white
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
         tableView.addSubview(activityIndicator)
     }
     
     private func setBlurEffectForNavigationBar() {
-        let visualEffectView   = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
         visualEffectView.frame =  (self.navigationController?.navigationBar.bounds.insetBy(dx: 0, dy: -10).offsetBy(dx: 0, dy: -10))!
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -78,8 +72,9 @@ class StartHeroView: UITableViewController {
 
 //MARK: - StartHeroViewProtocol
 extension StartHeroView: StartHeroViewProtocol {
-    func setImage(dataForImage: Data, indexPath: IndexPath) {
-        self.dataForImage = dataForImage
+    func showCellImage(dataForImage: Data, indexPath: IndexPath) {
+        
+        //так как мы листаем быстро, на момент получения картинки ячейки по данному индексу может уже не существовать, и попытка установки картинки приведет к падению из за обращения к нилу
         guard let cell = tableView.cellForRow(at: indexPath) as? HeroTableViewCell else { return }
         cell.setImage(data: dataForImage)
     }

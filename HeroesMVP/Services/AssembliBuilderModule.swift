@@ -12,7 +12,7 @@ protocol AssembliBuilderModuleProtocol: class {
     func createDetailHeroScreen(hero: Hero, router: Router) -> DetailHeroViewController
 }
 
-class AssembliBuilderModule: AssembliBuilderModuleProtocol {
+final class AssembliBuilderModule: AssembliBuilderModuleProtocol {
     
     func createMainHeroScreen(router: Router) -> StartHeroView {
         let mainHeroViewController = StartHeroView()

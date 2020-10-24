@@ -8,17 +8,17 @@
 import UIKit
 
 protocol DetailHeroViewProtocol: class {
-    var presenter: DetailHeroPresenterProtocol! {get set}
     func showImage(dataForImage: Data)
     func showInfo(hero: Hero)
 }
 
-
-class DetailHeroViewController: UIViewController, DetailHeroViewProtocol {
+final class DetailHeroViewController: UIViewController, DetailHeroViewProtocol {
     
+    //MARK: - properties
+    private var activityIndicator: UIActivityIndicatorView!
     var presenter: DetailHeroPresenterProtocol!
-    var activityIndicator: UIActivityIndicatorView!
     
+    //MARK: - IBOutlets
     @IBOutlet var heroImage: UIImageView!
     @IBOutlet var backGroundImage: UIImageView!
     
@@ -51,11 +51,6 @@ class DetailHeroViewController: UIViewController, DetailHeroViewProtocol {
         presenter.setHero()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-    }
-    
     private func setActivityIndicator() {
         self.activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.frame = CGRect(x: 0, y: 0,
@@ -74,6 +69,8 @@ class DetailHeroViewController: UIViewController, DetailHeroViewProtocol {
     }
     
     func showInfo(hero superHero: Hero) {
+        self.title = superHero.name
+        
         let powerstats = superHero.powerstats
         intelligenceLabel.text = "INTELLIGENCE: \(String(powerstats.intelligence))"
         strengthLabel.text = "STRENGTH: \(String(powerstats.strength))"
@@ -100,9 +97,6 @@ class DetailHeroViewController: UIViewController, DetailHeroViewProtocol {
         let work = superHero.work
         occupationLabel.text = "OCCUPATION: \(work.occupation)"
         baseLabel.text = "BASE: \(work.base)"
-        
-        self.title = superHero.name
-        
     }
 }
 

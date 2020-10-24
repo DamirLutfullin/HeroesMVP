@@ -13,7 +13,7 @@ protocol NetworkManagerProtocol {
     func downloadImageForCell(urlString: String, indexPath: IndexPath, completion: @escaping (Result<Data, Error>) -> Void) -> URLSessionTask?
 }
 
-class NetworkManager: NetworkManagerProtocol {
+final class NetworkManager: NetworkManagerProtocol {
     
     func getHeroes(completion: @escaping (Result<[Hero]?, Error>) -> ()) {
         guard let url = URL(string: "https://akabab.github.io/superhero-api/api/all.json") else {return}

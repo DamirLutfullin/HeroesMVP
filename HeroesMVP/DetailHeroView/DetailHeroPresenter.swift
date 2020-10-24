@@ -8,17 +8,16 @@
 import Foundation
 
 protocol DetailHeroPresenterProtocol: AnyObject {
-    var view: DetailHeroViewProtocol? { get set }
     init(view: DetailHeroViewProtocol, hero: Hero, network: NetworkManagerProtocol, router: Router)
     func setHero()
 }
 
-class DetailHeroPresenter: DetailHeroPresenterProtocol {
+final class DetailHeroPresenter: DetailHeroPresenterProtocol {
     
-    weak var view: DetailHeroViewProtocol?
-    var hero: Hero
-    var router: RouterProtocol
-    var network: NetworkManagerProtocol
+    private weak var view: DetailHeroViewProtocol?
+    private var hero: Hero
+    private var router: RouterProtocol
+    private var network: NetworkManagerProtocol
     
     required init(view: DetailHeroViewProtocol, hero: Hero, network: NetworkManagerProtocol, router: Router) {
         self.hero = hero
