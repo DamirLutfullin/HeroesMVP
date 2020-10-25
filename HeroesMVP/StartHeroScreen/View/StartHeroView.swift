@@ -20,6 +20,7 @@ final class StartHeroView: UITableViewController {
     private var activityIndicator: UIActivityIndicatorView!
     private let search = UISearchController(searchResultsController: nil)
     private var heroes: [Hero]? = []
+    private var searchText: String?
     var heroPresenter: StartHeroPresenterProtocol!
     
     //MARK: -Life cycle
@@ -109,7 +110,6 @@ extension StartHeroView: StartHeroViewProtocol {
 //MARK: - UITableViewDelegate
 extension StartHeroView {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
             if let hero = heroes?[indexPath.row] {
                 heroPresenter.showDetailView(hero: hero)
             
@@ -137,7 +137,8 @@ extension StartHeroView {
 //MARK: - UISearchResultsUpdating
 extension StartHeroView: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
+        guard let text = searchController.searchBar.text, !text.isEmpty, text != searchText else { return }
+        searchText = text
         heroPresenter.setFilteresHeroes(searchQuery: text)
     }
 }
