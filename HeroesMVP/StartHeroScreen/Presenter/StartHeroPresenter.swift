@@ -14,18 +14,20 @@ protocol StartHeroPresenterProtocol: class {
     init(view: StartHeroViewProtocol?, network: NetworkManagerProtocol, router: Router)
     
     func setHeroesForView()
+    func setFilteresHeroes(searchQuery: String)
     func showDetailView(hero: Hero)
     func setImageForCell(hero: Hero, cellIndex: IndexPath) -> URLSessionTask?
     
 }
 
 final class StartHeroPresenter: StartHeroPresenterProtocol {
-    
+   
     private var router: Router
     private weak var heroView: StartHeroViewProtocol!
     private var network: NetworkManagerProtocol!
     private var task: URLSessionTask?
     var heroes: [Hero]?
+    var filteredHeroes: [Hero]?
     
     required init(view: StartHeroViewProtocol?, network: NetworkManagerProtocol, router: Router) {
         self.heroView = view
@@ -38,11 +40,18 @@ final class StartHeroPresenter: StartHeroPresenterProtocol {
             switch result {
             case .success(let heroes):
                 self?.heroes = heroes
-                self?.heroView.showHeroes()
+                self?.heroView.showHeroes(heroes: heroes)
             case .failure(let error):
                 self?.heroView.showError(error: error)
             }
         }
+    }
+    
+    func setFilteresHeroes(searchQuery: String) {
+        self.filteredHeroes = heroes?.filter({ (hero) -> Bool in
+            return hero.name.contains(searchQuery)
+        })
+        heroView.showHeroes(heroes: filteredHeroes)
     }
     
     func showDetailView(hero: Hero) {

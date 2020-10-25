@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -39,13 +38,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="da0-aa-Tbr" userLabel="BackgroundImageView">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="da0-aa-Tbr" userLabel="BackgroundImageView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </imageView>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iwe-7U-kFp">
-                    <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5YZ-Sr-UGi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <blurEffect style="dark"/>
@@ -279,11 +278,11 @@
                 <constraint firstItem="LD4-ou-rpq" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="JwW-nY-tds"/>
                 <constraint firstItem="LD4-ou-rpq" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="OAX-Eh-2mI"/>
                 <constraint firstItem="da0-aa-Tbr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ROz-JG-TvJ"/>
-                <constraint firstItem="iwe-7U-kFp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XsY-tN-Smz"/>
+                <constraint firstItem="iwe-7U-kFp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XsY-tN-Smz"/>
                 <constraint firstItem="LD4-ou-rpq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gKE-tz-j4v"/>
                 <constraint firstItem="LD4-ou-rpq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hYq-xB-fgB"/>
                 <constraint firstItem="da0-aa-Tbr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kWA-xi-EwB"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="iwe-7U-kFp" secondAttribute="bottom" id="n05-61-Tci"/>
+                <constraint firstAttribute="bottom" secondItem="iwe-7U-kFp" secondAttribute="bottom" id="n05-61-Tci"/>
                 <constraint firstItem="iwe-7U-kFp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rQm-zt-Q9b"/>
                 <constraint firstAttribute="bottom" secondItem="da0-aa-Tbr" secondAttribute="bottom" id="xpb-Ao-lhq"/>
             </constraints>

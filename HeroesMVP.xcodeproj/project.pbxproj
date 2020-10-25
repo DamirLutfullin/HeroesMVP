@@ -18,7 +18,7 @@
 		199B45B72543921800835C5F /* DetailHeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199B45B62543921800835C5F /* DetailHeroViewController.swift */; };
 		19E3AE5A2539B76C00F2C691 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E3AE592539B76C00F2C691 /* NetworkManager.swift */; };
 		19E3AE5E2539B77800F2C691 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E3AE5D2539B77800F2C691 /* Router.swift */; };
-		19E3AE612539B79000F2C691 /* AssembliBuilderModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E3AE602539B79000F2C691 /* AssembliBuilderModule.swift */; };
+		19E3AE612539B79000F2C691 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E3AE602539B79000F2C691 /* ModuleBuilder.swift */; };
 		19FFACC6253BC18500EF1C1C /* HeroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FFACC4253BC18500EF1C1C /* HeroTableViewCell.swift */; };
 		19FFACC7253BC18500EF1C1C /* HeroTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19FFACC5253BC18500EF1C1C /* HeroTableViewCell.xib */; };
 		19FFACCC253BC76400EF1C1C /* StartHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FFACCB253BC76400EF1C1C /* StartHeroView.swift */; };
@@ -38,7 +38,7 @@
 		199B45B62543921800835C5F /* DetailHeroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailHeroViewController.swift; sourceTree = "<group>"; };
 		19E3AE592539B76C00F2C691 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		19E3AE5D2539B77800F2C691 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		19E3AE602539B79000F2C691 /* AssembliBuilderModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssembliBuilderModule.swift; sourceTree = "<group>"; };
+		19E3AE602539B79000F2C691 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		19FFACC4253BC18500EF1C1C /* HeroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroTableViewCell.swift; sourceTree = "<group>"; };
 		19FFACC5253BC18500EF1C1C /* HeroTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroTableViewCell.xib; sourceTree = "<group>"; };
 		19FFACCB253BC76400EF1C1C /* StartHeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartHeroView.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 			children = (
 				19E3AE592539B76C00F2C691 /* NetworkManager.swift */,
 				19E3AE5D2539B77800F2C691 /* Router.swift */,
-				19E3AE602539B79000F2C691 /* AssembliBuilderModule.swift */,
+				19E3AE602539B79000F2C691 /* ModuleBuilder.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -258,7 +258,7 @@
 				19E3AE5A2539B76C00F2C691 /* NetworkManager.swift in Sources */,
 				1936F52F253CFAF900C7179A /* DetailHeroPresenter.swift in Sources */,
 				19FFACC6253BC18500EF1C1C /* HeroTableViewCell.swift in Sources */,
-				19E3AE612539B79000F2C691 /* AssembliBuilderModule.swift in Sources */,
+				19E3AE612539B79000F2C691 /* ModuleBuilder.swift in Sources */,
 				199B45B72543921800835C5F /* DetailHeroViewController.swift in Sources */,
 				1938C2892535125600395E8F /* HeroModel.swift in Sources */,
 				1938C274253510D700395E8F /* AppDelegate.swift in Sources */,
@@ -394,7 +394,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TQU76263MV;
 				INFOPLIST_FILE = "$(SRCROOT)/HeroesMVP/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -415,7 +415,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TQU76263MV;
 				INFOPLIST_FILE = "$(SRCROOT)/HeroesMVP/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
