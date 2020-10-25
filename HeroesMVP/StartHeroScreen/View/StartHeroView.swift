@@ -143,6 +143,7 @@ extension StartHeroView: UISearchResultsUpdating {
     }
 }
 
+//MARK: - UISearchBarDeleagte
 extension StartHeroView: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         heroPresenter.setHeroesForView()
